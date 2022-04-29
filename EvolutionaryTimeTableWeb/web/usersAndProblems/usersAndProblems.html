@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="../common/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="../common/context-path-helper.js"></script>
+    <script type="text/javascript" src="usersAndProblems.js"></script>
+<!--    <script type="text/javascript" src="../algorithmOperation/algorithmOperation.js"></script>-->
+    <link rel="stylesheet" href="../common/bootstrap.min.css">
+    <link rel="stylesheet" href="userAndProblems.css">
+<!--    <script src="chatroom.js"></script>-->
+<!--    <link rel="stylesheet" href="chatroom.css">-->
+    <title>usersAndProblems</title>
+</head>
+<body>
+<section class="users-page">
+<div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3" >
+                <div class="sidebar online-head">
+                    <h4 > Online</h4>
+                    <div class="clearfix">
+                        <div class="input">
+
+                            <!-- place holder to show the users list -->
+                            <ul id="userslist">
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-sm-9">
+                <h1 class="display-4 file-upload">File Upload</h1>
+                <form id="uploadForm"  class ="our-form shadow rounded" action="fileUpload" enctype="multipart/form-data" method="POST">
+                    <input type="file" name="file1"><br>
+                    <br>
+
+                    <input type="Submit" class="btn btn-primary" value="Upload File"><br>
+                </form>
+                <div
+                        id="result" class="user-result">
+                </div>
+
+
+                <div class="bootstrap_datatables">
+                    <div class="container py-5">
+                        <header class="text-center text-black">
+                            <h1 class="display-4">Users Time Tables</h1>
+                        </header>
+                        <div class="row py-5">
+                            <div class="col-lg-10 mx-auto">
+                                <div class="card rounded shadow border-0">
+                                    <div class="card-body p-5 bg-white rounded">
+                                        <div class="table-responsive">
+                                            <table id="myTable" style="width: 100%;" class="table table-striped table-bordered">
+                                                <thead >
+                                                <tr>
+
+                                                    <th>ID</th>
+                                                    <th>User name</th>
+                                                    <th>Days Amount</th>
+                                                    <th>Hours Amount</th>
+                                                    <th>Classes Amount</th>
+                                                    <th>Teachers Amount</th>
+                                                    <th>Subjects Amount</th>
+                                                    <th>Soft Rules Amount</th>
+                                                    <th>Hard Rules Amount</th>
+                                                    <th>Number of users solving</th>
+                                                    <th>Current max fitness</th>
+                                                    <th>Operate Algorithm</th>
+                                                </tr>
+                                                </thead>
+
+                                                <tbody id="table-content">
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    <!--        <div class="row">-->
+    <!--&lt;!&ndash;            <div class="col-sm">col-sm</div>&ndash;&gt;-->
+    <!--&lt;!&ndash;            <div class="col-sm">col-sm</div>&ndash;&gt;-->
+    <!--&lt;!&ndash;            <div class="col-sm">col-sm</div>&ndash;&gt;-->
+    <!--        </div>-->
+    </section>
+</body>
+</html>

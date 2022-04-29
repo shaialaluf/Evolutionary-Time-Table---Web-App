@@ -1,0 +1,490 @@
+<html lang="en">
+<head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible">
+    <!-- Bootstrap CSS -->
+    <!--    <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">-->
+    <link rel="stylesheet" href="../common/bootstrap.min.css">
+    <link rel="stylesheet" href="algorithmOperation.css">
+    <script type="text/javascript" src="../common/jquery-2.0.3.min.js"></script>
+    <!--    <script type="text/javascript" src="common/jquery-2.0.3.min.js" ></script>-->
+    <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>-->
+    <script type="text/javascript" src="../common/bootstrap.js"></script>
+    <script type="text/javascript" src="algorithmOperation.js"></script>
+</head>
+<body>
+<button class="back-button" type="button">Back</button>
+<section class="project-tab third-page-section">
+    <div class="container-fluid">
+        <div class="row" >
+            <div class="col-sm-3">
+                <div class="row" id="firstRow">
+                <br>
+                <div class="register-form">
+                    <h1>System Details</h1>
+                </div>
+                <ul class="nav nav-tabs">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a href="#Rules" class="nav-link active" role="tab" data-toggle="tab" aria-selected="false">Rules</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#Subjects" class="nav-link nav-fill" role="tab" data-toggle="tab"
+                               aria-selected="true">Subjects</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#Teachers" class="nav-link" role="tab" data-toggle="tab">Teachers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#Classes" class="nav-link" role="tab" data-toggle="tab">Classes</a>
+                        </li>
+                    </ul>
+                </ul>
+
+
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="Rules">
+                        <table id="Rules-Table" style="width: 100%;" class="table table-striped table-bordered">
+                            <thead>
+                            <tr>
+                                <th>Rule Id</th>
+                                <th>Rule Type</th>
+                            </tr>
+                            </thead>
+
+                            <tbody id="rules-table-content">
+
+                        </table>
+                    </div>
+
+
+                    <div role="tabpanel" class="tab-pane" id="Subjects">
+                        <table id="Subjects-Table" style="width: 100%;" class="table table-striped table-bordered">
+                            <thead>
+                            <tr>
+                                <th>Subject Id</th>
+                                <th>Subject Name</th>
+                            </tr>
+                            </thead>
+                            <tbody id="subjects-table-content">
+                        </table>
+                    </div>
+
+
+                    <div role="tabpanel" class="tab-pane" id="Teachers">
+                        <table id="Teachers-Table" style="width: 100%;" class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>Teacher Id</th>
+                                <th>Teacher Name</th>
+                                <th>Subjects of Teacher</th>
+                            </tr>
+                            </thead>
+                            <tbody id="teachers-table-content">
+                        </table>
+                    </div>
+
+
+                    <div role="tabpanel" class="tab-pane" id="Classes">
+                        <table id="Classes-Table" style="width: 100%;" class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>Class Id</th>
+                                <th>Class Name</th>
+                                <th>Study Demands of Class</th>
+                            </tr>
+                            </thead>
+                            <tbody id="classes-table-content">
+                        </table>
+                    </div>
+                </div>
+                </div>
+                <div class="row" id="secondRow">
+                    <div class="col-sm user-run-table ">
+                        <h1>Users Currently Solving</h1>
+                        <table id="users-table" style="width: 100%;" class="table table-striped table-bordered">
+                            <thead>
+                            <tr>
+                                <th>User Name</th>
+                                <th>current Generation</th>
+                                <th>Best Fitness</th>
+                            </tr>
+                            <tr class="blank_row">
+                                <td colspan="3">no user solve this problem currently</td>
+                            </tr>
+                            </thead>
+
+                            <tbody id="users-table-content">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 init-form algo-properties">
+                <div class="row register-form">
+                    <form class="custom-form" id="algorithm-property-form">
+                        <h1>Set Algorithm Properties</h1>
+                        <div class="row form-group">
+                            <div class="col-sm-4 label-column"><label class="col-form-label"
+                                                                      for="Population-input-field">Population
+                                Size</label></div>
+                            <div class="col-sm-6 input-column"><input name="Population" class="form-control"
+                                                                      id="Population-input-field" type="text"
+                                                                      placeholder="Integer Number"></div>
+                            <div class="row form-group">
+                                <div class="col-sm-8 label-column"><label id="error-label-population-size"
+                                                                          class="col-form-label error-label visually-hidden">Error:
+                                    You must enter integer number!</label></div>
+                            </div>
+                        </div>
+
+
+                        <div class="row form-group" id="selectionMainDiv">
+                            <div class="col-sm-5 label-column"><label class="col-form-label">Selection Technique</label>
+                            </div>
+                            <div class="col-sm-5 select-column">
+                                <select name="selection" id="selection_selector" class="form-select">
+                                    <option disabled selected value style="display:none">select selection</option>
+                                    <option value="RouletteWheel">RouletteWheel</option>
+                                    <option value="Truncation">Truncation</option>
+                                    <option value="Tournament">Tournament</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-6 label-column"><label id="error-label-selection-empty"
+                                                                      class="col-form-label error-label visually-hidden">Error:
+                                must choose selection</label></div>
+                        </div>
+
+                        <!--                        <div class="row form-group">-->
+                        <!--                                <div class="col-sm-6 label-column"><label id="error-label-selection-empty" class="col-form-label error-label visually-hidden">Error: must chose selection</label></div>-->
+                        <!--                        </div>-->
+
+
+                        <div class="row form-group">
+                            <div class="col-sm-1">
+                                <input name="elitism-checkbox" class="form-check-input" type="checkbox"
+                                       id="elitismCheckBox">
+                            </div>
+
+                            <div class="col-sm-2 label-column">
+                                <label class="col-form-label">Elitism</label>
+                            </div>
+
+                            <div class="col-sm-9 input-column">
+                                <input name="elitism" class="form-control" type="text" id="elitismTextField"
+                                       placeholder="Natural number smaller than population size">
+                            </div>
+
+                            <div class="row form-group">
+                                <div class="col-sm-12 label-column"><label id="error-label-elitism"
+                                                                           class="col-form-label error-label visually-hidden">Error:
+                                    must enter Natural number smaller than population size</label></div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="row form-group" id="crossoverMainDiv">
+                            <div class="col-sm-5 label-column"><label class="col-form-label">Crossover Technique</label>
+                            </div>
+                            <div class="col-sm-6 select-column">
+                                <select name="crossover" id="crossover_selector" class="form-select">
+                                    <option disabled selected value style="display:none">select crossover</option>
+                                    <option value="DayTimeOriented">DayTimeOriented</option>
+                                    <option value="AspectOriented">AspectOriented</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-6 label-column"><label id="error-label-crossover-empty"
+                                                                      class="col-form-label error-label visually-hidden">Error:
+                                must choose crossover</label></div>
+                        </div>
+
+                        <div class="row form-group" id="mutationMainDiv">
+                            <div class="col-sm-5 label-column"><label class="col-form-label">Add Mutation</label></div>
+                            <div class="col-sm-5 button-column">
+                                <button class="btn btn-light" type="button" id="addMutationButton">+</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+            <div class="col-sm-4 init-form-end-conditions">
+                <div class="row register-form">
+                    <form class="custom-form end-conditions">
+                        <h1>Set Algorithm End Conditions + Frequency</h1>
+
+                        <div class="row form-group">
+                            <div class="col-sm-1">
+                                <input name="generation-checkbox" class="form-check-input" type="checkbox"
+                                       id="generations-checkbox">
+                            </div>
+
+                            <div class="col-sm-3 label-column">
+                                <label class="col-form-label">Generation</label>
+                            </div>
+
+                            <div class="col-sm-8 input-column">
+                                <input name="generation" class="form-control" type="text" id="generations-text-field"
+                                       placeholder="Number bigger than 100">
+                            </div>
+
+                            <div class="row form-group">
+                                <div class="col-sm-12 label-column"><label id="error-label-generations"
+                                                                           class="col-form-label error-label visually-hidden">Error:
+                                    must enter number bigger than 100!</label></div>
+                            </div>
+                        </div>
+
+
+                        <div class="row form-group">
+                            <div class="col-sm-1">
+                                <input name="fitness-checkbox" class="form-check-input" type="checkbox"
+                                       id="fitness-checkbox">
+                            </div>
+
+                            <div class="col-sm-3 label-column">
+                                <label class="col-form-label">Fitness</label>
+                            </div>
+
+                            <div class="col-sm-8 input-column">
+                                <input name="fitness" class="form-control" type="text" id="fitness-text-field"
+                                       placeholder="Number between 0-100">
+                            </div>
+
+                            <div class="row form-group">
+                                <div class="col-sm-12 label-column"><label id="error-label-fitness"
+                                                                           class="col-form-label error-label visually-hidden">Error:
+                                    must enter number between 0-100!</label></div>
+                            </div>
+                        </div>
+
+
+                        <div class="row form-group">
+                            <div class="col-sm-1">
+                                <input name="time-checkbox" class="form-check-input" type="checkbox" id="time-checkbox">
+                            </div>
+
+                            <div class="col-sm-3 label-column">
+                                <label class="col-form-label">Time</label>
+                            </div>
+
+                            <div class="col-sm-8 input-column">
+                                <input name="time" class="form-control" type="text" id="time-text-field"
+                                       placeholder="Time in minutes">
+                            </div>
+
+                            <div class="row form-group">
+                                <div class="col-sm-10 label-column"><label id="error-label-time"
+                                                                           class="col-form-label error-label visually-hidden">Error:
+                                    must enter natural number!</label></div>
+                            </div>
+                        </div>
+
+
+                        <div class="row form-group">
+                            <div class="col-sm-4 label-column">
+                                <label class="col-form-label">Generations Frequency</label>
+                            </div>
+                            <div class="col-sm-8 input-column">
+                                <input name="frequency" class="form-control" type="text" id="frequency-text-field"
+                                       placeholder="Natural Number">
+                            </div>
+
+                            <div class="row form-group">
+                                <div class="col-sm-10 label-column"><label id="error-label-frequency"
+                                                                           class="col-form-label error-label visually-hidden">Error:
+                                    must enter natural number!</label></div>
+                            </div>
+                            <div class="col-sm-12 label-column"><label id="error-label-conditions-empty"
+                                                                       class="col-form-label error-label visually-hidden">Error:
+                                must choose at least one end condition!</label></div>
+                        </div>
+                        <div class="alert alert-danger generic-error" style="display:none">
+                            <strong>Error!</strong> you have an error in one or more of the fields.
+                        </div>
+                    </form>
+                    <button class="Mybtn btn-primary run-button" type="button">Run Algorithm!</button>
+                </div>
+            </div>
+
+
+            <div class="col-sm-4 control-panel-form init-form" style="display:none;">
+                <div class="row register-form">
+                    <form class="custom-form">
+                        <h1>Algorithm Status</h1>
+
+                        <div class="row form-group">
+                            <div class="row form-group circular-frame">
+                                <div class="col-sm-9 label-column">
+                                    <label class="col-form-label current-generation-label-title">Current
+                                        Generation:</label>
+                                    <label class="col-form-label current-generation-label"></label></div>
+                                <div class="col-sm-9 label-column">
+                                    <label class="col-form-label current-fitness-label-title">Current Fitness:</label>
+                                    <label class="col-form-label current-fitness-label"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <h1>Control Panel</h1>
+
+                        <div class="row form-group">
+                            <div class="row form-group circular-frame">
+                                <div class="col-sm-9  label-column control-panel-button-bar">
+                                    <button type="button" class="btn resume-button btn-outline-secondary"
+                                            disabled="true">Resume
+                                    </button>
+                                    <button type="button" class="btn pause-button btn-outline-secondary">Pause</button>
+                                    <button type="button" class="btn stop-button btn-outline-secondary">Stop</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alert alert-danger generic-error" style="display:none">
+                            <strong>Error!</strong> you have an error in one or more of the fields.
+                        </div>
+                    </form>
+                    <div class="col-sm-12">
+                        <button type="button" class="btn show-best-solution-button btn-outline-secondary">Show Best
+                            Solution
+                        </button>
+                    </div>
+
+
+                    <div class="col-sm best-solution-component">
+                        <br>
+                        <div class="register-form">
+                            <h1>Best Solution Show</h1>
+                        </div>
+                        <ul class="nav nav-tabs best-solution-component-panel1" style="display:none">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item">
+                                    <a href="#Teacher-Oriented" class="nav-link active" role="tab" data-toggle="tab"
+                                       aria-selected="false">Teachers</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="#Class-Oriented" class="nav-link nav-fill" role="tab" data-toggle="tab"
+                                       aria-selected="true">Classes</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="#Raw" class="nav-link" role="tab" data-toggle="tab">Raw</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#Rules-Grades" class="nav-link" role="tab" data-toggle="tab">Rules</a>
+                                </li>
+                            </ul>
+                        </ul>
+
+                        <div class="tab-content best-solution-component-panel2" style="display:none">
+                            <div role="tabpanel" class="tab-pane" id="Rules-Grades">
+                                <table id="Rules-Grades-Table" style="width: 100%;"
+                                       class="table table-striped table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>Rule Name</th>
+                                        <th>Rule Type</th>
+                                        <th>Configuration</th>
+                                        <th>Rule Grade</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="rules-grades-table-content">
+                                </table>
+                            </div>
+
+                            <div role="tabpanel" class="tab-pane" id="Raw">
+                                <table id="Raw-Table" style="width: 100%;" class="table table-striped table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>Day</th>
+                                        <th>Hour</th>
+                                        <th>Class</th>
+                                        <th>Teacher</th>
+                                        <th>Subject</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="raw-table-content">
+                                </table>
+                            </div>
+
+                            <div role="tabpanel" class="tab-pane" id="Class-Oriented">
+                                <ul class="nav nav-tabs Class-Oriented-Ul">
+                                </ul>
+
+                                <div class="tab-content class-oriented-tabs-content">
+                                </div>
+                            </div>
+
+
+                            <div role="tabpanel" class="tab-pane active" id="Teacher-Oriented">
+                                <ul class="nav nav-tabs teacher-oriented-ul">
+                                </ul>
+
+                                <div class="tab-content teacher-oriented-tabs-content">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+    </div>
+    </div>
+    </div>
+
+</section>
+</body>
+</html>
+
+
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">-->
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"-->
+<!--          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<div class="offcanvas offcanvas-start show" tabindex="-1" aria-labelledby="sidebar-label" >-->
+<!--    <div>-->
+<!--        <button type="button" class="btn-close" aria-label="Close"></button>-->
+<!--    </div>-->
+<!--        <div class="dropdown mt-3">-->
+<!--            <button class="btn btn-secondary dropdown-toggle" type="button" id="book-dropdown" data-bs-toggle="dropdown" aria-expanded="false"> Choose a book title</button>-->
+<!--            <ul class="dropdown-menu" aria-labelledby="book-dropdown" style="">-->
+<!--                <li><a class="dropdown-item" href="#">Become a React Superhero</a></li>-->
+<!--                <li><a class="dropdown-item" href="#">Conquering Vue.js</a></li>-->
+<!--                <li><a class="dropdown-item" href="#">Levelling up Your Next.js</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+<!--<div class="row form-group">-->
+<!--    <form>-->
+<!--      <div class="col-sm-4 label-column">-->
+<!--        <label class="col-form-label">Choose Mutation type</label>-->
+<!--      </div>-->
+<!--        <div class="col-sm-4 select-column">-->
+<!--            '<select id = "" class = "form-select" >'+-->
+<!--            <option disabled selected value style="display:none">select mutation </option>'+-->
+<!--            '<option value = "Flipping"> Flipping </option>'+-->
+<!--            '<option value="Sizer">Sizer</option>'+-->
+<!--            '</select>-->
+<!--        </div>-->
+<!--    </form>-->
+<!--</div>-->
